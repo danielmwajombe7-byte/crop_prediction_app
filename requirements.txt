@@ -5,3 +5,10 @@ scikit-learn
 joblib
 matplotlib
 seaborn
+
+streamlit
+scikit-learn
+pandas
+numpy
+joblib
+
