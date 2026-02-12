@@ -1,0 +1,14 @@
+from sklearn.preprocessing import LabelEncoder
+import joblib
+
+# Define crops that are actually in your training data
+crops = ["Maize", "Tomato"]  # Add only crops your model trained on
+
+# Create the encoder
+encoder = LabelEncoder()
+encoder.fit(crops)
+
+# Save encoder as .pkl file
+joblib.dump(encoder, "crop_encoder.pkl")
+
+print("? crop_encoder.pkl created successfully!")
