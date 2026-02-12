@@ -1,4 +1,4 @@
-# save_as_pkl.py
+# crop_yield_model.pkl_pkl
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LinearRegression
@@ -29,3 +29,4 @@ model.fit(X, y)
 joblib.dump(model, "crop_yield_model.pkl")  # Save model
 
 print("✅ Model and encoder saved successfully!")
+
