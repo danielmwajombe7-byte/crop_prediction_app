@@ -1,0 +1,31 @@
+# save_as_pkl.py
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LinearRegression
+import joblib
+
+# Step 2a: Create dataset
+data = {
+    "Temperature": [26,28,24,30,27,32,25,29,23,31],
+    "Rainfall": [120,150,90,200,140,220,110,170,80,210],
+    "Soil_pH": [6.4,6.8,6.2,7.0,6.6,7.2,6.3,6.9,6.0,7.1],
+    "Crop_Type": ["Maize","Maize","Tomato","Maize","Tomato","Maize","Tomato","Maize","Tomato","Maize"],
+    "Yield": [3.5,4.2,2.8,5.0,3.6,5.8,3.1,4.6,2.4,5.4]
+}
+
+df = pd.DataFrame(data)
+
+# Step 2b: Encode crop type
+encoder = LabelEncoder()
+df["Crop_Encoded"] = encoder.fit_transform(df["Crop_Type"])
+joblib.dump(encoder, "crop_encoder.pkl")  # Save encoder
+
+# Step 2c: Train model
+X = df[["Temperature","Rainfall","Soil_pH","Crop_Encoded"]]
+y = df["Yield"]
+
+model = LinearRegression()
+model.fit(X, y)
+joblib.dump(model, "crop_yield_model.pkl")  # Save model
+
+print("✅ Model and encoder saved successfully!")
